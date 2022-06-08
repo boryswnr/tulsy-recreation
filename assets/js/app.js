@@ -17,17 +17,33 @@ hamburger.addEventListener("click", () => {
     document.body.classList.toggle("stopScroll")
 })
 
-let project = document.querySelector(".listItem");
-let projectList = document.querySelector(".projectsList");
+const project = document.querySelector(".listItem");
+const projectList = document.querySelectorAll(".listItem");
+let classToDisplay = "all";
+const projectTiles = document.querySelectorAll(".projectPhoto");
+const listItems = document.querySelectorAll(".listItem");
 
+function sortItems(item) {
+    if (!(item.classList.contains(classToDisplay.toLowerCase()))) {
+        console.log("sortItem items classlist:", item.classList);
+        item.classList.add("hide");
+    }
+}
 
-//TO BE FINSISHED when I actually learn some JS
-// project.addEventListener("click", (e) => {
-//     if (e.target.nodeName === "listItem") {
-//         Array.forEach(element => {
-//             element.classList.remove("active")
-//         });
-//         e.target.classList.add("active")
-//     }
-// }
-// )
+listItems.forEach(element => {
+    element.addEventListener("click", e => {
+        projectList.forEach(item => item.classList.remove("activeItem"));
+        e.path[0].classList.add("activeItem");
+        classToDisplay = e.path[0].innerText;
+        console.log("classToDisplay:", classToDisplay);
+        if (classToDisplay === "ALL") {
+            projectTiles.forEach(item => {
+                console.log("item", item)
+                item.classList.remove("hide")
+            });
+        } else {
+            projectTiles.forEach(tile => tile.classList.remove("hide"));
+            projectTiles.forEach(element => sortItems(element));
+        }        
+    })
+})
