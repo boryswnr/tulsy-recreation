@@ -61,7 +61,7 @@ a {
 
 .globalHeader h2 {
     text-transform: uppercase;
-    font-size: 21px;
+    font-size: clamp(1rem, 0.8276rem + 0.8621vw, 1.3125rem);
     font-weight: 700;
     letter-spacing: 4px;
 }
@@ -71,7 +71,7 @@ a {
     margin: 0 auto;
     color: var(--mainFontColor);
     line-height: 1.6;
-    font-size: 14px;
+    font-size: clamp(0.625rem, 0.4871rem + 0.6897vw, 0.875rem);
     letter-spacing: 1px;
 }
 
@@ -833,8 +833,6 @@ CHARTS SECTION
     width: 100%;
 }
 
-/* 700 px zdjęcie pierwsze i jendo pod drugim */
-
 @media (max-width: 700px) {
 
     .charts .info .text {
@@ -877,7 +875,7 @@ Recent project section
     color: var(--mainFontColor);
     letter-spacing: 1px;
     text-transform: uppercase;
-    font-size: 14px;
+    font-size: clamp(0.625rem, 0.4871rem + 0.6897vw, 0.875rem);
     border-radius: 3px;
     cursor: pointer;
 }
@@ -904,6 +902,7 @@ Recent project section
     padding: 0 15px;
     margin: 0 0 30px 0;
     transition: 500ms;
+    /* transform: scale(1); */
 }
 
 .recentProject .projectsGallery .projectPhoto.hide {
@@ -944,6 +943,31 @@ Recent project section
     width: 100%;
 }
 
+@media (max-width: 700px) {
+    .recentProject .projectsGallery {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .recentProject .projectsGallery .projectPhoto {
+        width: 100%;
+    }
+
+    .recentProject .projectsGallery .projectPhoto .imgContainer {
+        margin: 0 auto;
+    }
+}
+
+@media (max-width: 500px) {
+    .recentProject .projectsList li {
+        padding: 0 10px 0 0;
+    }
+}
+@media (max-width: 350px) {
+    .recentProject .projectsList li {
+        padding: 0 5px 0 0;
+    }
+}
 
 /***************
 Contact us section
